@@ -1,0 +1,35 @@
+{
+  "name": "DevicePrinciple",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "PrincipleAccessToken",
+      "polymorphic": {
+        "foreignKey": "deviceId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
+      }
+    },
+    "owner": {
+      "type": "belongsTo",
+      "model": "UserPrinciple",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

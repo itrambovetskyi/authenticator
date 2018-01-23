@@ -1,0 +1,32 @@
+{
+  "name": "PrincipleAccessToken",
+  "base": "AccessToken",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "idName": "id",
+      "polymorphic": {
+        "idType": "string",
+        "foreignKey": "userId",
+        "discriminator": "principalType"
+      }
+    },
+    "device": {
+      "type": "belongsTo",
+      "idName": "id",
+      "polymorphic": {
+        "idType": "string",
+        "foreignKey": "deviceId",
+        "discriminator": "principalType"
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

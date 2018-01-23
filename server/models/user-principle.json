@@ -1,0 +1,37 @@
+{
+  "name": "UserPrinciple",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "ownerRelations": true,
+  "properties": {
+    "userId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "PrincipleAccessToken",
+      "polymorphic": {
+        "foreignKey": "userId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
+      }
+    },
+    "devices": {
+      "type": "hasMany",
+      "model": "Device",
+      "foreignKey": "customerId",
+      "primaryKey": "id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
