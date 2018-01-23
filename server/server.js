@@ -5,6 +5,11 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+app.use(loopback.token({
+    model: app.models.PrincipleAccessToken,
+    bearerTokenBase64Encoded: false
+}));
+
 app.start = function () {
     // start the web server
     var oauth2 = require('loopback-component-oauth2');

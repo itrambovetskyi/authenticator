@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Userprinciple) {
+module.exports = function(UserPrinciple) {
 
 };

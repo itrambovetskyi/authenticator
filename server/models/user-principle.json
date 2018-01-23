@@ -1,14 +1,15 @@
 {
   "name": "UserPrinciple",
   "base": "User",
-  "idInjection": true,
+  "idInjection": false,
+  "emailVerificationRequired": false,
   "options": {
     "validateUpsert": true
   },
-  "ownerRelations": true,
   "properties": {
-    "userId": {
-      "type": "string",
+    "id": {
+      "type": "number",
+      "id": true,
       "required": true
     }
   },
@@ -17,21 +18,20 @@
     "accessTokens": {
       "type": "hasMany",
       "model": "PrincipleAccessToken",
-      "polymorphic": {
-        "foreignKey": "userId",
-        "discriminator": "principalType"
-      },
+      "foreignKey": "userId",
       "options": {
         "disableInclude": true
       }
-    },
-    "devices": {
-      "type": "hasMany",
-      "model": "Device",
-      "foreignKey": "customerId",
-      "primaryKey": "id"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW",
+      "property": "*"
+    }
+  ],
   "methods": {}
 }

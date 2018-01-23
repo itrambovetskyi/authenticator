@@ -10,21 +10,8 @@
   "relations": {
     "user": {
       "type": "belongsTo",
-      "idName": "id",
-      "polymorphic": {
-        "idType": "string",
-        "foreignKey": "userId",
-        "discriminator": "principalType"
-      }
-    },
-    "device": {
-      "type": "belongsTo",
-      "idName": "id",
-      "polymorphic": {
-        "idType": "string",
-        "foreignKey": "deviceId",
-        "discriminator": "principalType"
-      }
+      "model": "UserPrinciple",
+      "foreignKey": "userId"
     }
   },
   "acls": [],
