@@ -1,9 +1,11 @@
 {
   "name": "JwtToken",
+  "base": "AccessToken",
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
+  "excludeBaseProperties": ["created"],
   "properties": {
     "ttl": {
       "type": "number",
@@ -20,12 +22,17 @@
       "defaultFn": "now"
     }
   },
-  "hidden": ["id", "payload", "created"],
+  "hidden": ["id", "payload", "created", "scopes"],
   "validations": [],
   "relations": {
     "principle": {
       "type": "belongsTo",
-      "polymorphic": true
+      "idName": "id",
+      "polymorphic": {
+        "idType": "string",
+        "foreignKey": "principleId",
+        "discriminator": "principalType"
+      }
     }
   },
   "acls": [

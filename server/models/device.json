@@ -6,9 +6,9 @@
     "validateUpsert": true
   },
   "properties": {
-    "deviceId": {
+    "principleId": {
       "type": "string",
-      "required": true
+      "id": true
     }
   },
   "validations": [],
@@ -17,7 +17,11 @@
       "type": "hasMany",
       "model": "JwtToken",
       "polymorphic": {
-        "selector": "principle"
+        "foreignKey": "principleId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
       }
     }
   },

@@ -38,7 +38,6 @@
   },
   "JwtToken": {
     "dataSource": "db",
-    "public": false,
-    "relations": {}
+    "public": false
   }
 }

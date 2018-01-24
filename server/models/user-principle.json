@@ -1,16 +1,14 @@
 {
   "name": "UserPrinciple",
   "base": "User",
-  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "emailVerificationRequired": false,
   "properties": {
-    "id": {
-      "type": "number",
-      "id": true,
-      "required": true
+    "principleId": {
+      "type": "string",
+      "id": true
     }
   },
   "validations": [],
@@ -19,7 +17,11 @@
       "type": "hasMany",
       "model": "JwtToken",
       "polymorphic": {
-        "selector": "principle"
+        "foreignKey": "principleId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true
       }
     }
   },
