@@ -28,10 +28,6 @@
     "dataSource": "db",
     "public": true
   },
-  "PrincipleAccessToken": {
-    "dataSource": "db",
-    "public": true
-  },
   "UserPrinciple": {
     "dataSource": "db",
     "public": true
@@ -39,5 +35,10 @@
   "Device": {
     "dataSource": "db",
     "public": true
+  },
+  "JwtToken": {
+    "dataSource": "db",
+    "public": false,
+    "relations": {}
   }
 }

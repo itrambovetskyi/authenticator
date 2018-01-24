@@ -2,10 +2,10 @@
   "name": "UserPrinciple",
   "base": "User",
   "idInjection": false,
-  "emailVerificationRequired": false,
   "options": {
     "validateUpsert": true
   },
+  "emailVerificationRequired": false,
   "properties": {
     "id": {
       "type": "number",
@@ -17,10 +17,9 @@
   "relations": {
     "accessTokens": {
       "type": "hasMany",
-      "model": "PrincipleAccessToken",
-      "foreignKey": "userId",
-      "options": {
-        "disableInclude": true
+      "model": "JwtToken",
+      "polymorphic": {
+        "selector": "principle"
       }
     }
   },

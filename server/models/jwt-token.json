@@ -1,0 +1,45 @@
+{
+  "name": "JwtToken",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "ttl": {
+      "type": "number",
+      "ttl": true,
+      "default": 1800,
+      "description": "time to live in seconds (30 minutes by default)"
+    },
+    "payload": {
+      "type": "object",
+      "description": "token payload"
+    },
+    "created": {
+      "type": "Date",
+      "defaultFn": "now"
+    }
+  },
+  "hidden": ["id", "payload", "created"],
+  "validations": [],
+  "relations": {
+    "principle": {
+      "type": "belongsTo",
+      "polymorphic": true
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "property": "create",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

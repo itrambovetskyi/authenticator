@@ -5,9 +5,22 @@
   "options": {
     "validateUpsert": true
   },
-  "properties": {},
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "required": true
+    }
+  },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "JwtToken",
+      "polymorphic": {
+        "selector": "principle"
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

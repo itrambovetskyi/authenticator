@@ -34,7 +34,7 @@
   "auth": {
     "loopback#token": {
       "params": {
-        "model": "PrincipleAccessToken"
+        "model": "JwtToken"
       }
     }
   },

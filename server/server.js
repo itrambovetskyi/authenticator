@@ -6,7 +6,7 @@ var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
 app.use(loopback.token({
-    model: app.models.PrincipleAccessToken,
+    model: app.models.JwtToken,
     bearerTokenBase64Encoded: false
 }));
 
